@@ -19,28 +19,28 @@ class WordsSafe
      * ·-=/*+【】；‘’、，。~！@#￥%…&（）—{}：“|”《》？`1234567890[];'\,.!$^()_:"<>?※
      * @var array
      */
-    protected $_disturbList = ['·','-','=','/','*','+','【','】','；','‘','’','、','，','。','~','！','@','#','￥','%','…','&','（','）','—','{','}','：','“','|','”','《','》','？','`','0','1','2','3','4','5','6','7','8','9','[',']',';',"'",'\\',',','.','!','$','^','(',')','_',':','"','<','>','?','※'];
+    private $_disturbList = ['·','-','=','/','*','+','【','】','；','‘','’','、','，','。','~','！','@','#','￥','%','…','&','（','）','—','{','}','：','“','|','”','《','》','？','`','0','1','2','3','4','5','6','7','8','9','[',']',';',"'",'\\',',','.','!','$','^','(',')','_',':','"','<','>','?','※'];
 
     /**
      * 默认替代字符。
      *
      * @var string
      */
-    protected $_escapeChar = '*';
+    private $_escapeChar = '*';
 
     /**
      * 匹配是否区分大小写。默认不区分大小写
      * @var bool
      */
-    protected $_matchCase = false;
+    private $_matchCase = false;
 
     /**
      * 敏感词库，Trie Tree 格式的数组。
      *
      * @var array
      */
-    protected $_wordsTrieTree = [];
-    protected $_wordsTrieTreeLowCase = [];
+    private $_wordsTrieTree = [];
+    private $_wordsTrieTreeLowCase = [];
 
     /**
      * WordBan constructor.
@@ -63,7 +63,7 @@ class WordsSafe
      * @param $length
      * @return int
      */
-    protected function _check($text, $beginIndex, $length)
+    private function _check($text, $beginIndex, $length)
     {
         $flag = false;
         $word_length = 0;
