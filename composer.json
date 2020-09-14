@@ -1,0 +1,41 @@
+{
+  "name": "hashyoo/sensitive-words",
+  "description": "敏感词检测，过滤",
+  "type": "library",
+  "keywords": [
+    "php",
+    "laravel",
+    "敏感词",
+    "过滤",
+    "文本安全",
+    "检测"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "damon",
+      "email": "644577519@qq.com"
+    }
+  ],
+  "minimum-stability": "dev",
+  "require": {
+    "php": ">=5.4.0",
+    "ext-mbstring": "*",
+    "illuminate/support": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "HashyooWordsSafe\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "HashyooWordsSafe\\Providers\\WordsSafeProvider"
+      ],
+      "aliases": {
+        "WordsSafe": "HashyooWordsSafe\\Facade\\WordsSafe"
+      }
+    }
+  }
+}
