@@ -1,6 +1,6 @@
 {
   "name": "hashyoo/sensitive-words",
-  "description": "敏感词检测，过滤",
+  "description": "敏感词检测，过滤，文本安全，文本检测",
   "type": "library",
   "keywords": [
     "php",

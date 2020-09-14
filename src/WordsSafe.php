@@ -16,10 +16,10 @@ class WordsSafe
 
     /**
      * 干扰字符集合。
-     *
+     * ·-=/*+【】；‘’、，。~！@#￥%…&（）—{}：“|”《》？`1234567890[];'\,.!$^()_:"<>?※
      * @var array
      */
-    protected $_disturbList = [];
+    protected $_disturbList = ['·','-','=','/','*','+','【','】','；','‘','’','、','，','。','~','！','@','#','￥','%','…','&','（','）','—','{','}','：','“','|','”','《','》','？','`','0','1','2','3','4','5','6','7','8','9','[',']',';',"'",'\\',',','.','!','$','^','(',')','_',':','"','<','>','?','※'];
 
     /**
      * 默认替代字符。
@@ -29,10 +29,10 @@ class WordsSafe
     protected $_escapeChar = '*';
 
     /**
-     * 匹配是否区分大小写。
+     * 匹配是否区分大小写。默认不区分大小写
      * @var bool
      */
-    protected $_matchCase = true;
+    protected $_matchCase = false;
 
     /**
      * 敏感词库，Trie Tree 格式的数组。
@@ -205,7 +205,7 @@ class WordsSafe
      */
     public function setDisturbList($disturbList = [])
     {
-        $this->_disturbList = $disturbList;
+        $this->_disturbList = array_merge($this->_disturbList,$disturbList);
     }
 
     /**
