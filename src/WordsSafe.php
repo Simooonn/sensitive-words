@@ -50,8 +50,28 @@ class WordsSafe
     public function __construct($sensitiveWords = null)
     {
         if ($sensitiveWords != null && is_array($sensitiveWords)) {
-            $this->load($sensitiveWords);
+            $words = array_merge($sensitiveWords,$this->sensitive_words());
         }
+        else{
+            $words = $this->sensitive_words();
+        }
+
+        if(!empty($words)){
+            $this->load($words);
+        }
+
+    }
+
+    private function sensitive_words(){
+        $path = realpath(__DIR__ . '/../data/words.txt');
+        $result = file_get_contents($path);
+        if(empty($result)){
+            return [];
+        }
+        else{
+            $result = explode(PHP_EOL,trim(str_replace(" ","",$result),PHP_EOL));
+        }
+        return $result;
     }
 
     /**
