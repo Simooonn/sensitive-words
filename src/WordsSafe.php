@@ -50,6 +50,9 @@ class WordsSafe
     public function __construct($sensitiveWords = null)
     {
         if ($sensitiveWords != null && is_array($sensitiveWords)) {
+            $this->load($sensitiveWords);
+        }
+       /* if ($sensitiveWords != null && is_array($sensitiveWords)) {
             $words = array_merge($sensitiveWords,$this->sensitive_words());
         }
         else{
@@ -58,7 +61,7 @@ class WordsSafe
 
         if(!empty($words)){
             $this->load($words);
-        }
+        }*/
 
     }
 
@@ -69,8 +72,18 @@ class WordsSafe
             return [];
         }
         else{
-            $result = explode(PHP_EOL,trim(str_replace(" ","",$result),PHP_EOL));
+            $result = explode("\n",trim(str_replace(" ","",$result),"\n"));
+            $result = array_map('strtolower',$result);
+            $result = array_unique($result);
+            sort($result);
         }
+        /*$s = '';
+        foreach ($result as $value)
+        {
+            $s .= $value."\n";
+        }
+
+        file_put_contents($path,$s);*/
         return $result;
     }
 
